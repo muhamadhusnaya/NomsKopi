@@ -24,7 +24,29 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\FileUpload::make('image')
+                    ->directory('products')
+                    ->label('Image')
+                    ->image()
+                    ->required(),
+                Forms\Components\TextInput::make('name')
+                    ->label('Name')
+                    ->required(),
+                Forms\Components\TextInput::make('price')
+                    ->label('Price')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\TextInput::make('stock')
+                    ->label('Stock')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\Select::make('category_id')
+                    ->label('Category')
+                    ->options([
+                        'makanan' => 'Makanan',
+                        'minuman' => 'Minuman',
+                    ])
+                    ->required(),
             ]);
     }
 
@@ -32,7 +54,13 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Name'),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Price'),
+                Tables\Columns\TextColumn::make('stock')
+                    ->label('Stock'),
+                Tables\Columns\TextColumn::make('category')
             ])
             ->filters([
                 //
@@ -63,3 +91,5 @@ class ProductResource extends Resource
         ];
     }
 }
+
+?>

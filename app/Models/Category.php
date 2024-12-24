@@ -9,10 +9,11 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'name',
         'image',
-        'is_active'
+        'is_active',
+        'jenis_makanan'
     ];
 
     public function product()

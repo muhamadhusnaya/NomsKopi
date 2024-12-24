@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->json('image');
             $table->boolean('is_active')->default(true);
+            $table->enum('jenis_makanan', ['makanan', 'minuman']);
             $table->timestamps();
         });
     }
