@@ -9,10 +9,11 @@ class Promocode extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'image',
         'name',
         'codepromo',
+        'discounts',
         'expired'
     ];
 
