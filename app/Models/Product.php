@@ -28,6 +28,6 @@ class Product extends Model
 
     public function OrderItems()
     {
-        return $this->belongsTo(OrderItem::class);
+        return $this->hasMany(OrderItem::class);
     }
 }
