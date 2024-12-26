@@ -90,7 +90,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">kopi klotok</h5>
                             <p class="card-text"><b>Rp 15.000</b></p>
-                            <button class="btn" style="background-color: #FFA500; border-color: #FFA500;" data-bs-toggle="modal" data-bs-target="#orderModal">Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
@@ -102,7 +101,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">kopi klotok</h5>
                             <p class="card-text"><b>Rp 15.000</b></p>
-                            <button class="btn" style="background-color: #FFA500; border-color: #FFA500;" data-bs-toggle="modal" data-bs-target="#orderModal">Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
@@ -114,7 +112,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">kopi klotok</h5>
                             <p class="card-text"><b>Rp 15.000</b></p>
-                            <button class="btn" style="background-color: #FFA500; border-color: #FFA500;" data-bs-toggle="modal" data-bs-target="#orderModal">Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
@@ -126,7 +123,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">kopi klotok</h5>
                             <p class="card-text"><b>Rp 15.000</b></p>
-                            <button class="btn" style="background-color: #FFA500; border-color: #FFA500;" data-bs-toggle="modal" data-bs-target="#orderModal">Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
@@ -138,7 +134,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">kopi klotok</h5>
                             <p class="card-text"><b>Rp 15.000</b></p>
-                            <button class="btn" style="background-color: #FFA500; border-color: #FFA500;" data-bs-toggle="modal" data-bs-target="#orderModal">Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
@@ -150,57 +145,16 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">kopi klotok</h5>
                             <p class="card-text"><b>Rp 15.000</b></p>
-                            <button class="btn" style="background-color: #FFA500; border-color: #FFA500;" data-bs-toggle="modal" data-bs-target="#orderModal">Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <button class="btn" style="background-color: #FFA500; border-color: #FFA500;"><a class="text-decoration-none text-black" href="menu">Selengkapnya</a></button>
+                <button class="btn" style="background-color: #FFA500; border-color: #FFA500;"><a class="text-decoration-none text-black text-uppercase" href="menu">Pesan Sekarang</a></button>
             </div>
         </div>
     </section>
     {{-- menu selesai --}}
-
-    {{-- Modal untuk Pesan --}}
-    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-        <div class="modal-dialog position-fixed bottom-0 start-0 end-0 mb-0">
-            <div class="modal-content">
-                <div class="modal-header">
-                    {{-- ini nanti bukan detail pesanan tapi ngambil data nama menu nya, misal menu yg dipilih es kopi, tulisan detail pesanan nanti bakal jadi es --}}
-                    <h5 class="modal-title" id="orderModalLabel">Detail Pesanan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div>
-                            <input type="checkbox"> Pedas
-                            <input type="checkbox"> Sedang
-                            <input type="checkbox"> Tidak Pedas
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="jumlah" class="form-label">Jumlah</label>
-                        <div class="input-group">
-                            <button class="btn btn-outline-secondary" type="button" id="minusButton">
-                                <i class="bi bi-dash"></i>
-                            </button>
-                            <span class="input-group-text" id="jumlahText" style="width: 50px; text-align: center;">0</span>
-                            <button class="btn btn-outline-secondary" type="button" id="plusButton">
-                                <i class="bi bi-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Pesan</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- tentang kami mulai --}}
     <section id="tentangKami" class="p-4 bg-black text-white rounded-4">
