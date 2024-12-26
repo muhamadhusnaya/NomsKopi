@@ -6,6 +6,8 @@ use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -24,23 +26,25 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                ->label('Name')
-                ->required(),
-
-                Forms\Components\FileUpload::make('image')
-                ->directory('products')
-                ->label('Image')
-                ->image()
-                ->required(),
-                
-                Forms\Components\TextInput::make('jenis_makanan')
-                    ->label('Jenis Makanan')
-                    ->required(),
-                
-                Toggle::make('is_active')
-                    ->required()
-                    ->default(true)
+                Section::make([
+                    Grid::make()->schema([
+                        Forms\Components\Select::make('jenis_makanan')
+                            ->label('Jenis Makanan')
+                            ->options([
+                                'makanan' => 'Makanan',
+                                'minuman' => 'Minuman',
+                            ])
+                            ->required(),
+                    ]),
+                    Forms\Components\FileUpload::make('image')
+                        ->directory('categories')
+                        ->label('Gambar')
+                        ->image()
+                        ->required(),
+                    Toggle::make('is_active')
+                        ->required()
+                        ->default(true)
+                ])
             ]);
     }
 
@@ -48,19 +52,18 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'), 
-                
-                Tables\Columns\TextColumn::make('name')
-                ->searchable(),
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Gambar'), 
                 Tables\Columns\TextColumn::make('jenis_makanan')
-                ->searchable(),
-                
+                    ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -79,7 +82,7 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
+            'index' => Pages\ListCategory::route('/'),
             'create' => Pages\CreateCategory::route('/create'),
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];

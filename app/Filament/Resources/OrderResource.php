@@ -23,7 +23,9 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('description')
+                    ->label('Deskripsi Pesanan')
+                    ->required()
             ]);
     }
 
@@ -31,7 +33,24 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('no_transaction')
+                    ->label('No Order')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('customer_name')
+                    ->label('Nama Konsumen')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('grand_total')
+                    ->label('Harga Total')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Deskripsi Pesanan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('order_date')
+                    ->label('Tanggal Pemesanan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('payment_status')
+                    ->label('Status Pembayaran')
+                    ->searchable()
             ])
             ->filters([
                 //

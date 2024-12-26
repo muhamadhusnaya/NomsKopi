@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->json('image');
             $table->boolean('is_active')->default(true);
             $table->enum('jenis_makanan', ['makanan', 'minuman']);

@@ -6,6 +6,8 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,29 +26,31 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('image')
-                    ->directory('products')
-                    ->label('Image')
-                    ->image()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->label('Name')
-                    ->required(),
-                Forms\Components\TextInput::make('price')
-                    ->label('Price')
-                    ->numeric()
-                    ->required(),
-                Forms\Components\TextInput::make('stock')
-                    ->label('Stock')
-                    ->numeric()
-                    ->required(),
-                Forms\Components\Select::make('category_id')
-                    ->label('Category')
-                    ->options([
-                        'makanan' => 'Makanan',
-                        'minuman' => 'Minuman',
-                    ])
-                    ->required(),
+                Section::make([
+                    Grid::make()->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama Produk')
+                            ->required(),
+                        Forms\Components\TextInput::make('price')
+                            ->label('Harga')
+                            ->numeric()
+                            ->required(),
+                        Forms\Components\TextInput::make('stock')
+                            ->label('Stok')
+                            ->numeric()
+                            ->required(),
+                        Forms\Components\Select::make('category_id')
+                            ->label('Kategori')
+                            ->required()
+                            ->preload()
+                            ->relationship('category', 'jenis_makanan'),
+                    ]),
+                    Forms\Components\FileUpload::make('image')
+                        ->directory('products')
+                        ->label('Gambar')
+                        ->image()
+                        ->required(),
+                ]) 
             ]);
     }
 
@@ -54,13 +58,17 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Gambar'), 
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Name'),
+                    ->label('Nama Produk'),
                 Tables\Columns\TextColumn::make('price')
-                    ->label('Price'),
+                    ->label('Harga'),
                 Tables\Columns\TextColumn::make('stock')
-                    ->label('Stock'),
-                Tables\Columns\TextColumn::make('category')
+                    ->label('Stok'),
+                Tables\Columns\TextColumn::make('category.jenis_makanan')
+                    ->label('Kategori')
+                    ->sortable()
             ])
             ->filters([
                 //

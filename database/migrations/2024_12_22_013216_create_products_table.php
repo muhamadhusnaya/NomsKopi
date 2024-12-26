@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->json('image')->nullable();
             $table->string('name');
-            $table->decimal('price', 10, 2);
+            $table->integer('price');
             $table->integer('stock');
             //$table->foreign('category_id')->constrained('categories')->cascadeOnDelete();
             $table->unsignedBigInteger('category_id');

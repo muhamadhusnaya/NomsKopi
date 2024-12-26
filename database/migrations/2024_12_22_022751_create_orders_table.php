@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('no_order')->unique();
+            $table->string('customer_name');
+            $table->string('external_id');
+            $table->string('no_transaction');
+            $table->string('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('quantity');
+            $table->bigInteger('grand_total');
             $table->string('description');
             $table->date('order_date');
-            $table->enum('payment_status', ['pading', 'succes', 'cancelled'])->default('pading');
-            $table->enum('payment_method', ['cash', 'virtual_account']);
+            $table->string('payment_status')->default('pading');
+            $table->string('invoice_url');
             $table->timestamps();
         });
     }

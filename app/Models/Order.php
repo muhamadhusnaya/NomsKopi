@@ -10,14 +10,18 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
-        'user_id',
-        'no_order',
-        'desccription',
-        'order_date',
-        'payment_status',
-        'payment_method',
-    ];
+    // protected $fillabel = [
+    //     'name',
+    //     'external_id',
+    //     'no_transaction',
+    //     'product_id',
+    //     'quantity',
+    //     'grand_total',
+    //     'order_date',
+    //     'payment_status',
+    //     'payment_method',
+    // ];
+    protected $guarded = [];
 
     public function user()
     {
@@ -29,8 +33,8 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function address()
+    public function promocode()
     {
-        return $this->hasOne(Address::class);
+        return $this->hasOne(Promocode::class);
     }
 }
